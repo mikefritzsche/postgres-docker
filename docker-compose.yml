@@ -2,6 +2,7 @@ services:
   pgdb1:
     build: ./db1
     env_file:
+      - .env
       - ./db1/.env
     ports:
       - "${POSTGRES_DB1_PORT}:5432"
@@ -11,6 +12,7 @@ services:
   pgdb2:
     build: ./db2
     env_file:
+      - .env
       - ./db2/.env
     ports:
       - "${POSTGRES_DB2_PORT}:5432"

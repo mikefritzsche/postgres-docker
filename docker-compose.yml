@@ -1,17 +1,22 @@
 services:
-  db:
-    build: .
-    ports:
-      - "${POSTGRES_PORT}:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+  pgdb1:
+    build: ./db1
     env_file:
-      - .env
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - ./db1/.env
+    ports:
+      - "${POSTGRES_DB1_PORT}:5432"
+    volumes:
+      - postgres_data1:/var/lib/postgresql/data
+
+  pgdb2:
+    build: ./db2
+    env_file:
+      - ./db2/.env
+    ports:
+      - "${POSTGRES_DB2_PORT}:5432"
+    volumes:
+      - postgres_data2:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  postgres_data1:
+  postgres_data2:

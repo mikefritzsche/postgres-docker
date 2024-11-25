@@ -1,4 +1,4 @@
-FROM postgres:15.5-alpine
+FROM postgres:16.4-alpine3.20
 
 # Default environment variables (override with .env)
 ENV POSTGRES_DB=${POSTGRES_DB}
@@ -11,5 +11,5 @@ ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 EXPOSE 5432
 
 # Optional: Custom postgres configuration
-# COPY ./postgresql.conf /etc/postgresql/postgresql.conf
+ COPY ./postgresql.conf /etc/postgresql/postgresql.conf
 CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]

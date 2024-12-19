@@ -1,6 +1,3 @@
 .env
 .DS_Store
 .idea/
-
-postgresql.conf
-init.sql
